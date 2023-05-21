@@ -1,9 +1,16 @@
+<script setup>
+    import {RouterLink} from 'vue-router';
+
+    const { quizQuestionsLength, noOfCorrectAnswers } = defineProps(['quizQuestionsLength', 'noOfCorrectAnswers'])
+</script>
+
 <template>
     <div class="results">
         <p>You Results...</p>
         <h1>
-            4/8
+            {{noOfCorrectAnswers}}/{{ quizQuestionsLength }}
         </h1>
+        <RouterLink to="/">Go Back</RouterLink>
     </div>
 </template>
 
