@@ -12,24 +12,18 @@
   })
 
   const beforeEnter = (el) => {
-    gsap.from(el, {
-      y: -100,
-      opacity: 0,
-    })
+    el.style.opacity = 0
+    el.style.transform = "translateY(-100px)"
   }
 
   const enter = (el) => {
     gsap.to(el, {
-      y: 0,
       opacity: 1,
-      duration: 0.3,
-      stagger: 0.3
+      y: 0,
+      duration: 0.4,
+      delay: el.dataset.index * 0.3
     })
   }
-
-  // const afterEnter = () => {
-
-  // }
 </script>
 
 <template>
@@ -43,7 +37,6 @@
         appear
         @before-enter="beforeEnter"
         @enter="enter"
-        @afterEnter="afterEnter"
       >
         <Card 
           v-for="(quiz, index) in quizzes" 
